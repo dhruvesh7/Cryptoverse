@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Crypto Dashboard</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(135deg, #16a085, #1abc9c);
+            overflow: hidden;
+        }
+
+        /* Login Container */
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+            transform: translateY(100px);
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        .login-container h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Input Field */
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #16a085;
+            outline: none;
+            box-shadow: 0 0 8px rgba(22, 160, 133, 0.6);
+        }
+
+        /* Button Styles */
+        .btn {
+            background-color: #16a085;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        /* Animation Effects */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Login to Crypto Dashboard</h2>
+        <form id="loginForm">
+            <input type="text" id="username" class="input-field" placeholder="Username" required />
+            <input type="password" id="password" class="input-field" placeholder="Password" required />
+            <button type="submit" class="btn">Login</button>
+            <p class="error-message" id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Hardcoded credentials (you can replace this with API-based login in real apps)
+        const validUsername = 'raja';
+        const validPassword = '1234';
+
+
+        // Get the login form and error message elements
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+        // Handle the form submit event
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the username and password are correct
+            if (username === validUsername && password === validPassword) {
+                // Redirect to the dashboard page
+                window.location.href = 'index.html'; // Replace 'dashboard.html' with your actual dashboard file name
+            } else {
+                // Show error message
+                errorMessage.textContent = 'Invalid Username or Password. Please try again.';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
